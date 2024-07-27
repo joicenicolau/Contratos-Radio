@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "1767ccb9-881c-4656-a58d-d89f86fa76ab",
+		"name": "Radio Contracts API",
+		"description": "Coleção de requisições para testar a API de cadastro e gestão de contratos de uma emissora de rádio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7098445"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"user\",\n  \"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/login",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Contratos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/contracts",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Contrato por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/contracts/1",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"contracts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Novo Contrato",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"clientName\": \"Cliente D\",\n  \"startDate\": \"2023-04-01\",\n  \"endDate\": \"2023-09-30\",\n  \"value\": 2500,\n  \"status\": \"ativo\"\n}"
+				},
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/contracts",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Contrato",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"clientName\": \"Cliente A Atualizado\",\n  \"startDate\": \"2023-01-01\",\n  \"endDate\": \"2023-12-31\",\n  \"value\": 1100,\n  \"status\": \"ativo\"\n}"
+				},
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/contracts/1",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"contracts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir Contrato",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://teste-front-1.azurewebsites.net/contracts/1",
+					"protocol": "https",
+					"host": [
+						"teste-front-1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"contracts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
