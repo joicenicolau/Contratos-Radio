@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  React.createElement(BrowserRouter, null, React.createElement(App, null))
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
 );
 
 reportWebVitals();
