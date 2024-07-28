@@ -7,18 +7,20 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import './Dashboard.css';
+import { useNavigate } from 'react-router-dom'; 
+import '../style/Dashboard.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
   const [contracts, setContracts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchContracts = async () => {
       try {
         const response = await axios.get('https://teste-front-1.azurewebsites.net/contracts');
-        console.log('Dados dos contratos:', response.data);  // erro dos dados, retirar depois
+        console.log('Dados dos contratos:', response.data);  
         setContracts(response.data);
       } catch (error) {
         console.error("Erro ao buscar contratos:", error);
@@ -42,7 +44,7 @@ function Dashboard() {
     ],
   };
 
-  console.log('Dados para o gráfico:', contractStatusData);  // Log dos gráfico
+  console.log('Dados para o gráfico:', contractStatusData); 
 
   return (
     <div className="dashboard-container">
@@ -54,6 +56,9 @@ function Dashboard() {
           <p>Carregando dados...</p>
         )}
       </div>
+      <button className="view-contracts-button" onClick={() => navigate('/contracts')}>
+        Ver Contratos
+      </button>
     </div>
   );
 }
