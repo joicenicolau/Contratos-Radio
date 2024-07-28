@@ -50,3 +50,7 @@ Css específico para cada página, deixando responsivo.
 
 **Página de Criar Novos Contratos:** Aqui vocẽ pode criar um novo contrato, adicionando nome do cliente, data de início e fim, valor do contrato e status do contrato. Ela também tem um botão que redireciona a lista de contratos.
 
+
+https://github.com/user-attachments/assets/4a0dd2eb-29f8-4587-b224-5a75723e5ff5
+
+
