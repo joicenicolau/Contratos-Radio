@@ -48,5 +48,5 @@ Css específico para cada página, deixando responsivo.
  - Excluir um Contrato: Clique no botão "Excluir" ao lado de um contrato para removê-lo.
  - Paginação de 10 contratos por vez.
 
-**Página de Criar Noos Contratos:** Aqui vocẽ pode criar um novo contrato, adicionando nome do cliente, data de início e fim, valor do contrato e status do contrato. Ela também tem um botão que redireciona a lista de contratos.
+**Página de Criar Novos Contratos:** Aqui vocẽ pode criar um novo contrato, adicionando nome do cliente, data de início e fim, valor do contrato e status do contrato. Ela também tem um botão que redireciona a lista de contratos.
 
