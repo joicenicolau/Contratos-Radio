@@ -30,7 +30,7 @@ function Contracts() {
     }
   };
 
-  // UseEffect para buscar contratos ao montar o componente
+  // UseEffect para buscar contratos 
   useEffect(() => {
     fetchContracts();
   }, []);
@@ -67,7 +67,7 @@ function Contracts() {
       <form onSubmit={handleUpdate} className="mb-4">
         <ContractFormList contract={editContract} setContract={setEditContract} />
         <div className="d-flex justify-content-end">
-          <button type="submit" className="btn btn-primary me-2">Atualizar Contrato</button>
+          <button type="submit" className="btn btn-success me-2">Atualizar Contrato</button>
           <button type="button" className="btn btn-secondary" onClick={() => { setEditMode(false); setEditContract(null); }}>Cancelar</button>
         </div>
       </form>
@@ -100,7 +100,10 @@ function Contracts() {
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Lista de Contratos</h2>
-      <button className="btn btn-success mb-4" onClick={() => navigate('/create-contract')}>Criar Novo Contrato</button>
+      <div className="d-flex justify-content-between mb-4">
+        <button className="btn btn-success" onClick={() => navigate('/create-contract')}>Criar Novo Contrato</button>
+        <button className="btn btn-success" onClick={() => navigate('/dashboard')}>Ver Gráficos</button>
+      </div>
       {editMode && renderEditFormList()}
       <ContractTable contracts={currentContracts} handleEdit={handleEdit} handleDelete={handleDelete} />
       <Pagination currentPage={currentPage} totalPages={totalPages} handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage} />
