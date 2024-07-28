@@ -1,0 +1,16 @@
+/* Responsividade */
+@media (max-width: 600px) {
+  .create-contract-container {
+    padding: 10px;
+  }
+
+  input,
+  select {
+    padding: 6px;
+  }
+
+  .button-group button {
+    padding: 8px 16px;
+    margin-right: 5px; 
+  }
+}

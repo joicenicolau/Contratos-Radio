@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+  .login-form {
+    width: 90%; 
+    padding: 15px;
+  }
+
+  button {
+    font-size: 14px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    width: 100%; 
+    padding: 10px;
+  }
+
+  button {
+    font-size: 12px; 
+    padding: 8px; 
+  }
+
+  input {
+    padding: 8px;
+  }
+}
