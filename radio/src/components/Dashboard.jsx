@@ -8,28 +8,32 @@ import {
   Legend
 } from 'chart.js';
 import { useNavigate } from 'react-router-dom'; 
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o CSS do Bootstrap
-import '../style/Dashboard.css'; // Importar estilos personalizados, se necessário
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import '../style/Dashboard.css'; 
 
+// Registra os componentes necessários do ChartJS
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Dashboard() {
+  // Estado para armazenar os contratos
   const [contracts, setContracts] = useState([]);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
+  // useEffect para buscar contratos 
   useEffect(() => {
     const fetchContracts = async () => {
       try {
         const response = await axios.get('https://teste-front-1.azurewebsites.net/contracts');
         console.log('Dados dos contratos:', response.data);  
-        setContracts(response.data);
+        setContracts(response.data); // Atualiza o estado 
       } catch (error) {
         console.error("Erro ao buscar contratos:", error);
       }
     };
-    fetchContracts();
+    fetchContracts(); // Chama a função para buscar contratos
   }, []);
 
+  // Dados para o gráfico 
   const contractStatusData = {
     labels: ['Ativo', 'Expirado', 'Pendente'],
     datasets: [
@@ -40,7 +44,7 @@ function Dashboard() {
           contracts.filter(contract => contract.status === 'expirado').length,
           contracts.filter(contract => contract.status === 'pendente').length,
         ],
-        backgroundColor: ['#4caf50', '#f44336', '#ff9800'],
+        backgroundColor: ['#4caf50', '#f44336', '#ff9800'], // Cores para cada status
       },
     ],
   };
@@ -55,6 +59,7 @@ function Dashboard() {
           <div className="card p-4 shadow">
             <div className="chart-container mb-4">
               {contracts.length > 0 ? (
+                // Renderiza o gráfico se houver contratos
                 <Pie data={contractStatusData} />
               ) : (
                 <p>Carregando dados...</p>
