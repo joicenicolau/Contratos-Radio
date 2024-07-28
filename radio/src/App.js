@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Contracts from './components/Contracts';
 import CreateContract from './components/CreateContract';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

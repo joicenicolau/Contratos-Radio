@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../style/Contracts.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o CSS do Bootstrap
+import '../style/Contracts.css'; // Importar estilos personalizados, se necessário
 
 function Contracts() {
   const [contracts, setContracts] = useState([]);
@@ -57,46 +58,56 @@ function Contracts() {
   const renderEditForm = () => {
     if (!editContract) return null;
     return (
-      <form onSubmit={handleUpdate}>
-        <div>
-          <label>Nome do Cliente:</label>
+      <form onSubmit={handleUpdate} className="mb-4">
+        <div className="mb-3">
+          <label htmlFor="clientName" className="form-label">Nome do Cliente:</label>
           <input
             type="text"
+            className="form-control"
+            id="clientName"
             value={editContract.clientName}
             onChange={(e) => setEditContract({ ...editContract, clientName: e.target.value })}
             required
           />
         </div>
-        <div>
-          <label>Data de Início:</label>
+        <div className="mb-3">
+          <label htmlFor="startDate" className="form-label">Data de Início:</label>
           <input
             type="date"
+            className="form-control"
+            id="startDate"
             value={editContract.startDate}
             onChange={(e) => setEditContract({ ...editContract, startDate: e.target.value })}
             required
           />
         </div>
-        <div>
-          <label>Data de Término:</label>
+        <div className="mb-3">
+          <label htmlFor="endDate" className="form-label">Data de Término:</label>
           <input
             type="date"
+            className="form-control"
+            id="endDate"
             value={editContract.endDate}
             onChange={(e) => setEditContract({ ...editContract, endDate: e.target.value })}
             required
           />
         </div>
-        <div>
-          <label>Valor:</label>
+        <div className="mb-3">
+          <label htmlFor="value" className="form-label">Valor:</label>
           <input
             type="number"
+            className="form-control"
+            id="value"
             value={editContract.value}
             onChange={(e) => setEditContract({ ...editContract, value: parseFloat(e.target.value) })}
             required
           />
         </div>
-        <div>
-          <label>Status:</label>
+        <div className="mb-3">
+          <label htmlFor="status" className="form-label">Status:</label>
           <select
+            className="form-select"
+            id="status"
             value={editContract.status}
             onChange={(e) => setEditContract({ ...editContract, status: e.target.value })}
             required
@@ -106,8 +117,8 @@ function Contracts() {
             <option value="pendente">Pendente</option>
           </select>
         </div>
-        <button type="submit">Atualizar Contrato</button>
-        <button type="button" onClick={() => { setEditMode(false); setEditContract(null); }}>Cancelar</button>
+        <button type="submit" className="btn btn-primary me-2">Atualizar Contrato</button>
+        <button type="button" className="btn btn-secondary" onClick={() => { setEditMode(false); setEditContract(null); }}>Cancelar</button>
       </form>
     );
   };
@@ -135,52 +146,56 @@ function Contracts() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p className="text-danger">{error}</p>;
 
   return (
-    <div className="contract-list">
-      <h2>Lista de Contratos</h2>
-      <button className="create-contract-button" onClick={() => navigate('/create-contract')}>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Lista de Contratos</h2>
+      <button className="btn btn-success mb-4" onClick={() => navigate('/create-contract')}>
         Criar Novo Contrato
       </button>
       {editMode && renderEditForm()}
-      <table>
-        <thead>
-          <tr>
-            <th>Nome do Cliente</th>
-            <th>Data de Início</th>
-            <th>Data de Término</th>
-            <th>Valor do Contrato</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentContracts.map(contract => (
-            <tr key={contract.id}>
-              <td>{contract.clientName}</td>
-              <td>{contract.startDate}</td>
-              <td>{contract.endDate}</td>
-              <td>{contract.value}</td>
-              <td>{contract.status}</td>
-              <td>
-                <button onClick={() => handleEdit(contract)}>Editar</button>
-                <button onClick={() => handleDelete(contract.id)}>Excluir</button>
-              </td>
+      <div className="table-responsive">
+        <table className="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Nome do Cliente</th>
+              <th>Data de Início</th>
+              <th>Data de Término</th>
+              <th>Valor do Contrato</th>
+              <th>Status</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Anterior
-        </button>
-        <span>Página {currentPage} de {totalPages}</span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Próxima
-        </button>
+          </thead>
+          <tbody>
+            {currentContracts.map(contract => (
+              <tr key={contract.id}>
+                <td>{contract.clientName}</td>
+                <td>{contract.startDate}</td>
+                <td>{contract.endDate}</td>
+                <td>{contract.value}</td>
+                <td>{contract.status}</td>
+                <td>
+                  <button className="btn btn-warning me-2" onClick={() => handleEdit(contract)}>Editar</button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(contract.id)}>Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <nav aria-label="Page navigation">
+        <ul className="pagination">
+          <li className="page-item">
+            <button className="page-link" onClick={handlePreviousPage} disabled={currentPage === 1}>Anterior</button>
+          </li>
+          <li className="page-item disabled"><span className="page-link">Página {currentPage} de {totalPages}</span></li>
+          <li className="page-item">
+            <button className="page-link" onClick={handleNextPage} disabled={currentPage === totalPages}>Próxima</button>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }

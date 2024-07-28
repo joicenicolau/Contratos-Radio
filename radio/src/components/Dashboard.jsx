@@ -8,7 +8,8 @@ import {
   Legend
 } from 'chart.js';
 import { useNavigate } from 'react-router-dom'; 
-import '../style/Dashboard.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o CSS do Bootstrap
+import '../style/Dashboard.css'; // Importar estilos personalizados, se necessário
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -47,18 +48,27 @@ function Dashboard() {
   console.log('Dados para o gráfico:', contractStatusData); 
 
   return (
-    <div className="dashboard-container">
-      <h2>Dashboard</h2>
-      <div className="chart-container">
-        {contracts.length > 0 ? (
-          <Pie data={contractStatusData} />
-        ) : (
-          <p>Carregando dados...</p>
-        )}
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Dashboard</h2>
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <div className="card p-4 shadow">
+            <div className="chart-container mb-4">
+              {contracts.length > 0 ? (
+                <Pie data={contractStatusData} />
+              ) : (
+                <p>Carregando dados...</p>
+              )}
+            </div>
+            <button 
+              className="btn btn-primary w-100"
+              onClick={() => navigate('/contracts')}
+            >
+              Ver Contratos
+            </button>
+          </div>
+        </div>
       </div>
-      <button className="view-contracts-button" onClick={() => navigate('/contracts')}>
-        Ver Contratos
-      </button>
     </div>
   );
 }
