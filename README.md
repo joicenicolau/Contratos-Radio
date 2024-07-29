@@ -30,7 +30,7 @@ Este é um aplicativo web construído com React que permite gerenciar contratos,
  - **ContractFormList.jsx:** Formuário renderizado em lista.
  - **Pagination.jsx:** Componente de paginação para a lista de contratos.
 
-**src/App.jsx:** Configuração das rotas do aplicativo.
+**src/App.js:** Configuração das rotas do aplicativo.
 
 **src/style:**
 Css específico para cada página, deixando responsivo.
